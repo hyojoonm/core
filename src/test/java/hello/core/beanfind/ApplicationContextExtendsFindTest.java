@@ -1,9 +1,8 @@
 package hello.core.beanfind;
 
-import hello.core.AppConfig;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPocliy;
+import hello.core.discount.RateDiscountPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,15 +24,15 @@ public class ApplicationContextExtendsFindTest {
     void findBeadnByParentTypeBeanName(){
         DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy", DiscountPolicy.class);
 
-        assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPocliy.class);
+        assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
     }
 
 
     @Test
     @DisplayName("특정 하위 타입으로 조회")
     void findBeanBySubType(){
-        RateDiscountPocliy bean = ac.getBean(RateDiscountPocliy.class);
-        assertThat(bean).isInstanceOf(RateDiscountPocliy.class);
+        RateDiscountPolicy bean = ac.getBean(RateDiscountPolicy.class);
+        assertThat(bean).isInstanceOf(RateDiscountPolicy.class);
     }
 
     @Test
@@ -70,7 +69,7 @@ public class ApplicationContextExtendsFindTest {
 
         @Bean
         public DiscountPolicy rateDiscountPolicy(){
-            return new RateDiscountPocliy();
+            return new RateDiscountPolicy();
         }
         @Bean
         public DiscountPolicy fixDiscountPolicy(){
